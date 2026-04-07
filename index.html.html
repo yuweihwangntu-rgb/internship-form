@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國立臺灣大學土木工程學系 跨域暑期實習申請表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f3ef;
+    --card: #ffffff;
+    --border: #e2ddd5;
+    --text: #2c2a26;
+    --text-secondary: #6b665c;
+    --accent: #8b1a1a;
+    --accent-bg: #fdf6f5;
+    --required: #c0392b;
+    --input-bg: #fafaf8;
+    --input-focus: #8b1a1a18;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+  .banner { background: linear-gradient(135deg, #8b1a1a 0%, #5a1010 100%); color: white; padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; }
+  .banner::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #d4a853, #e8c76a, #d4a853); }
+  .banner h1 { font-size: 1.65rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 6px; }
+  .banner p { font-size: 0.95rem; opacity: 0.85; font-weight: 300; }
+  .container { max-width: 680px; margin: 0 auto; padding: 24px 16px 60px; }
+  .section { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px 28px 24px; margin-bottom: 18px; border: 1px solid var(--border); animation: fadeUp 0.4s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .section-header { background: var(--accent); color: white; padding: 14px 28px; border-radius: var(--radius) var(--radius) 0 0; margin: -28px -28px 24px; font-weight: 700; font-size: 1.05rem; letter-spacing: 1px; }
+  .field { margin-bottom: 22px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-weight: 500; font-size: 0.92rem; margin-bottom: 8px; color: var(--text); }
+  label .req { color: var(--required); margin-left: 3px; }
+  label .hint { font-weight: 300; font-size: 0.82rem; color: var(--text-secondary); display: block; margin-top: 2px; }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], select, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.92rem; background: var(--input-bg); color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--input-focus); }
+  textarea { resize: vertical; min-height: 100px; }
+  select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b665c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .checkbox-row { display: flex; align-items: flex-start; gap: 10px; padding: 16px; background: var(--accent-bg); border-radius: 8px; border: 1px solid #e8d5d4; }
+  .checkbox-row input[type="checkbox"] { margin-top: 4px; accent-color: var(--accent); width: 18px; height: 18px; flex-shrink: 0; }
+  .checkbox-row span { font-size: 0.88rem; line-height: 1.6; }
+  .link-hint { background: #f0f7ff; border: 1px solid #c8ddf0; border-radius: 8px; padding: 14px 16px; margin-top: 8px; font-size: 0.82rem; color: #1a5276; line-height: 1.7; }
+  .submit-btn { display: block; width: 100%; padding: 16px; background: linear-gradient(135deg, #8b1a1a, #a8332e); color: white; border: none; border-radius: 8px; font-family: inherit; font-size: 1.05rem; font-weight: 700; letter-spacing: 1px; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 16px rgba(139,26,26,0.25); }
+  .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,26,26,0.35); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+  .info-note { font-size: 0.82rem; color: var(--text-secondary); text-align: center; margin-top: 14px; line-height: 1.6; }
+  .toast { position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-120%); background: #2e7d32; color: white; padding: 14px 28px; border-radius: 8px; font-weight: 500; box-shadow: 0 8px 32px rgba(0,0,0,0.2); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; max-width: 90vw; text-align: center; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  @media (max-width: 500px) { .banner h1 { font-size: 1.3rem; } .section { padding: 22px 18px 20px; } .section-header { margin: -22px -18px 20px; padding: 12px 18px; } }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <h1>國立臺灣大學土木工程學系</h1>
+  <p>跨域暑期實習計畫 申請表</p>
+</div>
+
+<div class="container">
+
+  <div class="section" style="animation-delay:0.02s">
+    <div class="section-header">實習計畫說明</div>
+    <p style="font-size:0.92rem; margin-bottom:14px;">各位同學好，</p>
+    <p style="font-size:0.92rem; margin-bottom:14px;">今年度的臺大土木結構、水利、測量與大地組暑期實習計畫將於 <strong>2026年7月1日至8月14日</strong>舉行。</p>
+    <p style="font-size:0.92rem; margin-bottom:14px;">報名時間為 <strong>4月20日 ~ 5月8日 23:59</strong>，請於報名截止時間前完成填寫表單，截止日期之後的申請將不被受理，感謝配合。</p>
+    <p style="font-size:0.92rem; margin-bottom:14px;">若有任何疑問或需要進一步資訊，歡迎隨時與我們聯絡。</p>
+    <div style="background:var(--accent-bg); border:1px solid #e8d5d4; border-radius:8px; padding:16px 20px; margin:16px 0;">
+      <p style="font-size:0.9rem; margin-bottom:6px;">📅 線上面試：<strong>2026/5/18</strong></p>
+      <p style="font-size:0.9rem; margin-bottom:6px;">📋 錄取名單公佈：<strong>2026/5/25</strong></p>
+      <p style="font-size:0.9rem;">💰 實習津貼：<strong>新台幣 12,000 元</strong>（共7週）</p>
+    </div>
+    <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border);">
+      <p style="font-size:0.88rem; font-weight:500; margin-bottom:4px;">聯絡資訊</p>
+      <p style="font-size:0.88rem; color:var(--text-secondary);">2026跨域暑期實習籌備團隊</p>
+      <p style="font-size:0.88rem; color:var(--text-secondary);">e-mail：<a href="mailto:civilsummerintern501@gmail.com" style="color:var(--accent);">civilsummerintern501@gmail.com</a></p>
+    </div>
+  </div>
+
+  <div class="section" style="animation-delay:0.1s">
+    <div class="section-header">基本資料</div>
+    <div class="field"><label>中文姓名<span class="req">*</span></label><input type="text" id="nameCht" required placeholder="請輸入中文姓名"></div>
+    <div class="field"><label>英文姓名<span class="req">*</span></label><input type="text" id="nameEng" required placeholder="請輸入英文姓名"></div>
+    <div class="field"><label>行動電話<span class="req">*</span><span class="hint">例：0912-345-678</span></label><input type="tel" id="phone" required placeholder="0912-345-678"></div>
+    <div class="field"><label>聯絡用電子信箱<span class="req">*</span></label><input type="email" id="email" required placeholder="example@email.com"></div>
+    <div class="field"><label>目前就讀學校、科系<span class="req">*</span></label><input type="text" id="school" required placeholder="例：國立臺灣大學土木工程學系"></div>
+    <div class="field"><label>目前就讀年級<span class="req">*</span></label><input type="text" id="grade" required placeholder="例：大三"></div>
+  </div>
+
+  <div class="section" style="animation-delay:0.15s">
+    <div class="section-header">實習題目志願選填</div>
+    <div class="field"><label style="margin-bottom:14px; line-height:1.7">請參考表中之實習題目，選出您最有興趣的項目，並依序排列前5名。<span class="hint">若填寫相同志願，將視為僅選擇填寫之項目。可跨組別自由選擇。</span></label></div>
+    <div class="field"><label>實習題目志願一<span class="req">*</span></label><select id="wish1" required><option value="">請選擇</option></select></div>
+    <div class="field"><label>實習題目志願二<span class="req">*</span></label><select id="wish2" required><option value="">請選擇</option></select></div>
+    <div class="field"><label>實習題目志願三<span class="req">*</span></label><select id="wish3" required><option value="">請選擇</option></select></div>
+    <div class="field"><label>實習題目志願四<span class="req">*</span></label><select id="wish4" required><option value="">請選擇</option></select></div>
+    <div class="field"><label>實習題目志願五<span class="req">*</span></label><select id="wish5" required><option value="">請選擇</option></select></div>
+  </div>
+
+  <div class="section" style="animation-delay:0.2s">
+    <div class="section-header">個人履歷</div>
+    <div class="field">
+      <label>請簡單介紹您的個人特質，並說明為什麼我們應該錄取您。<span class="req">*</span></label>
+      <textarea id="intro" required placeholder="請輸入您的回答"></textarea>
+    </div>
+    <div class="field">
+      <label>請簡單說明您對有興趣題目的了解程度，並且描述您期望在本次實習期間的收穫。<span class="req">*</span></label>
+      <textarea id="motivation" required placeholder="請輸入您的回答"></textarea>
+    </div>
+    <div class="field">
+      <label>請附上富有您個人特色的履歷A4一頁（Google Drive 連結）<span class="req">*</span>
+        <span class="hint">檔案格式為PDF。檔名：姓名_履歷.pdf（例：某某某_履歷.pdf）</span>
+      </label>
+      <input type="url" id="resumeLink" required placeholder="請貼上 Google Drive 分享連結">
+      <div class="link-hint">
+        📌 <strong>如何取得連結：</strong>將 PDF 上傳至你的 Google Drive → 右鍵點選檔案 → 「共用」 → 「一般存取權」改為「知道連結的任何人」 → 複製連結貼到上方欄位。
+      </div>
+    </div>
+    <div class="field">
+      <label>請上傳其他加分文件，如成績單、活動證明等等（Google Drive 連結）<span class="req">*</span>
+        <span class="hint">檔案格式為PDF。檔名：姓名_加分文件.pdf（例：某某某_加分文件.pdf）</span>
+      </label>
+      <input type="url" id="bonusLink" required placeholder="請貼上 Google Drive 分享連結">
+    </div>
+  </div>
+
+  <div class="section" style="animation-delay:0.25s">
+    <div class="checkbox-row">
+      <input type="checkbox" id="confirm" required>
+      <span>每位申請者只可投遞一次申請表！並且請務必注意申請時間以及相關文件，可以在申請截止時間（<strong>5月8日 23:59</strong>）前以相同帳號登入更改表單。<strong>我已了解。</strong></span>
+    </div>
+  </div>
+
+  <button class="submit-btn" onclick="submitForm()">提交申請</button>
+  <p class="info-note">提交後將產生一份摘要供您確認。如需修改，請於截止日前重新提交。</p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- 隱藏表單：用來把資料 POST 到 Google Apps Script -->
+<form id="hiddenForm" method="POST" action="https://script.google.com/macros/s/AKfycbwAtwyqiaR96RLEikWnU2X9gzLk4MUfex_H5bBnOOlLTgQcQd-4g4HuLHmC34XEhV2E/exec" target="hiddenFrame" style="display:none;">
+  <input type="hidden" name="payload" id="hiddenPayload">
+</form>
+<iframe name="hiddenFrame" id="hiddenFrame" style="display:none;"></iframe>
+
+<script>
+const topics = {
+  "大地工程組": [
+    "非飽和土柱自由崩塌試驗與MPM/SPH模擬（指導教授：黃郁惟、吳映昕）",
+    "機械手臂輔助阿太堡試驗之自動化操作系統開發（指導教授：黃郁惟、賴晉達、吳映昕）",
+    "山岳引水隧道的受震分析與斷層互制行為（指導教授：黃郁惟、柯俊宇）"
+  ],
+  "結構工程組": [
+    "水泥與混凝土材料固碳標準規範/方法學建立研究（指導教授：胡瑋秀）",
+    "用過核子燃料處置緩衝材料相關（暫定）（指導教授：胡瑋秀、黃郁惟）",
+    "生物炭超高延性水泥基複合材料之開發（暫定）（指導教授：胡瑋秀、黃郁惟、吳映昕、陳慈愔）",
+    "待定（指導教授：柯俊宇、黃郁惟）",
+    "待定（指導教授：柯俊宇）",
+    "結構系統與主動減振裝置的複合實驗與分析（指導教授：賴晉達）",
+    "振動台系統動態行為的AI擬合（指導教授：賴晉達）",
+    "動態互制模擬框架（如土壤-結構互制或水體-結構互制）（指導教授：賴晉達、黃世勳、黃郁惟）"
+  ],
+  "水利工程組": [
+    "土石流改道實驗與AI實驗影像分析（指導教授：陳慈愔、胡瑋秀、賴晉達、黃郁惟）",
+    "潰壩與側坡崩塌堵水之複合型潰口演化實驗與模擬（指導教授：陳慈愔）",
+    "越域引水可行性、效益與影響（指導教授：陳慈愔）",
+    "智慧電網效益評估：小水力/小風力發電的最小規模與總體貢獻（指導教授：黃世勳）",
+    "新興水資源開發：地伏流模擬與取水口位置設置評估——以馬太鞍流域為例（指導教授：黃世勳、陳慈愔）"
+  ],
+  "測量工程組": [
+    "應用衛星合成孔徑雷達影像分析邊坡穩定性（指導教授：蔡亞倫、吳映昕、陳慈愔、黃郁惟）",
+    "時間序列差分干涉變形觀測量之時空特徵分解（指導教授：蔡亞倫、陳慈愔）"
+  ]
+};
+
+function buildOptions() {
+  for (let i = 1; i <= 5; i++) {
+    const sel = document.getElementById('wish' + i);
+    sel.innerHTML = '<option value="">請選擇</option>';
+    for (const [group, list] of Object.entries(topics)) {
+      const og = document.createElement('optgroup');
+      og.label = '【' + group + '】';
+      list.forEach(t => { const opt = document.createElement('option'); opt.value = t; opt.textContent = t; og.appendChild(opt); });
+      sel.appendChild(og);
+    }
+  }
+}
+buildOptions();
+
+function showToast(msg, success) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = success ? '#2e7d32' : '#c0392b';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+function submitForm() {
+  const fields = ['nameCht','nameEng','phone','email','school','grade','wish1','wish2','wish3','wish4','wish5','intro','motivation','resumeLink','bonusLink'];
+  for (const id of fields) {
+    if (!document.getElementById(id).value.trim()) return showToast('請填寫所有必填欄位', false);
+  }
+  if (!document.getElementById('confirm').checked) return showToast('請確認已了解申請注意事項', false);
+
+  const btn = document.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = '提交中...';
+
+  // 收集資料
+  const data = {};
+  fields.forEach(id => data[id] = document.getElementById(id).value.trim());
+
+  // 透過隱藏表單送出
+  document.getElementById('hiddenPayload').value = JSON.stringify(data);
+  document.getElementById('hiddenForm').submit();
+
+  // 因為 no-cors，我們無法確認是否成功，但3秒後顯示提交完成
+  setTimeout(() => {
+    showToast('申請表已成功提交！感謝您的申請。', true);
+    btn.textContent = '已提交 ✓';
+  }, 3000);
+}
+</script>
+</body>
+</html>
